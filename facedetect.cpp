@@ -91,12 +91,11 @@ int main( int argc, char** argv )
 		return -1;
 	}
 
-
+	storage = cvCreateMemStorage( 0 );
 	while ( key != 27 )
 	{
 		capture = cvCaptureFromCAM(0);
 
-		storage = cvCreateMemStorage( 0 );
 		image = cvQueryFrame( capture );
 
 		if(!image)
@@ -106,7 +105,6 @@ int main( int argc, char** argv )
 		detect_and_draw( image );
 		cvNamedWindow( "video", 1 );
 		cvShowImage( "video", image );
-		cvClearMemStorage( storage );
 		key = cvWaitKey( 20 );
 	}
 
